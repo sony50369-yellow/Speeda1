@@ -1,0 +1,51 @@
+<!doctype html><html lang="th"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rabies Planner • SPEEDA</title>
+<link rel="icon" href="icon.svg"><link rel="apple-touch-icon" href="icon.png"><link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css"></head><body>
+<header class="appbar"><img class="logo" src="icon.svg" alt=""><div class="titles">
+<h1>Rabies Planner • SPEEDA</h1><p class="subtitle">TRCS Speeda • นัด/ราคา/คำนวณ RIG • UI พาสเทล</p></div></header>
+<main>
+<section class="card"><h2>ตั้งค่าการฉีด</h2>
+<div class="row">
+  <label><input type="radio" name="mode" value="PEP" checked> PEP</label>
+  <label><input type="radio" name="mode" value="PrEP"> PrEP</label>
+  <label><input type="radio" name="mode" value="Booster"> Booster</label>
+</div>
+<div class="row">
+  <label>Day 0: <input type="date" id="startDate"></label>
+  <label>Route: <select id="route"><option value="ID" selected>ID</option><option value="IM">IM</option></select></label>
+  <label>วัคซีน: <select id="brand"></select></label>
+</div>
+<div class="row">
+  <label>ประวัติวัคซีน: <select id="prev"><option value="never">ไม่เคยครบ 3 เข็ม</option><option value=">=3">เคยครบ ≥3 เข็ม</option></select></label>
+  <label>เข็มล่าสุดเมื่อ: <input type="date" id="lastDoseDate"></label>
+  <label><input type="checkbox" id="hiRisk"> เสี่ยงสูง/ภูมิคุ้มกันบกพร่อง → ID 1 จุด</label>
+</div>
+<div class="row"><button id="planBtn">สร้างตารางนัด</button><button id="resetBtn" class="ghost">ล้าง</button></div>
+<div id="planOut" class="out"></div></section>
+<section class="card"><h2>คำนวณ RIG (ERIG/HRIG)</h2>
+<div class="row">
+  <label>น้ำหนัก (kg): <input type="number" id="wt" min="1" step="0.1" value="60"></label>
+  <label>ชนิด: <select id="rigType"><option value="ERIG">ERIG (40 IU/kg)</option><option value="HRIG">HRIG (20 IU/kg)</option></select></label>
+  <label>ผลิตภัณฑ์: <select id="rigProd"></select></label>
+</div>
+<div class="row"><button id="rigBtn">คำนวณ</button></div>
+<div id="rigOut" class="out"></div>
+<p class="note">ฉีดรอบแผลให้มากที่สุด ที่เหลือ IM ไกลตำแหน่งวัคซีน • ให้ภายใน 7 วันแรกหลังเริ่มวัคซีน</p>
+</section>
+<section class="card"><h2>ข้อมูลวัคซีน (เรียงมีในไทยก่อน)</h2><div id="products" class="grid"></div></section>
+<section class="card"><h2>FAQ</h2><ul id="faq"></ul></section>
+
+<section class="card">
+  <h2>แนวทางการรักษา (PDF)</h2>
+  <ul>
+    <li><a href="./guidelines/แนวทางการฉีดวัคซีนพิษสุนัขบ้า_รพน.pdf" target="_blank" rel="noopener">แนวทางการฉีดวัคซีนพิษสุนัขบ้า (รพ.)</a></li>
+    <li><a href="./guidelines/แนวทางการดูแลรักษาผู้สัมผัส_โรคพิษสุนัขบ้า_2561.pdf" target="_blank" rel="noopener">แนวทางการดูแลรักษาผู้สัมผัส โรคพิษสุนัขบ้า (สถานเสาวภา 2561)</a></li>
+  </ul>
+</section>
+
+</main>
+<footer><p>ฟอนต์ Sarabun • วันที่ วว-ดด-ปปปป • ไฟล์รากเดียวกัน</p></footer>
+<script src="app.js"></script></body></html>
